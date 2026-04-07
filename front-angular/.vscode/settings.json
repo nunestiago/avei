@@ -1,3 +1,8 @@
 {
-    "workbench.secondarySideBar.defaultVisibility": "hidden"
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "tailwindCSS.classFunctions": [
+    "hlm",
+    "cva",
+    "classes"
+  ]
 }
