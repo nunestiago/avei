@@ -1,0 +1,15 @@
+type: workspace
+model: workspace
+id: wk_niJBVHfBkb
+createdAt: 2026-05-13T23:19:16.545648387
+updatedAt: 2026-05-13T23:19:20.694114384
+authentication: {}
+authenticationType: null
+description: ''
+headers: []
+name: avei-requests
+encryptionKeyChallenge: eUE0azNuQwFVx64+amrpRqxUk6MM1EXOnS95/o2jShyeAI51aNT+ptULVrDrEgSdFyhYMJUlVFVTH5iUQ118kRIp0XBIDI0frBGuGHq8R6sTDNoVJdW3OAVAt/p+A8MgtuI=
+settingValidateCertificates: true
+settingFollowRedirects: true
+settingRequestTimeout: 0
+settingDnsOverrides: []
