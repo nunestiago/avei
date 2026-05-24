@@ -1,0 +1,4 @@
+tasks:
+  dev:
+    description: "Run the development server"
+    command: "docker compose up"

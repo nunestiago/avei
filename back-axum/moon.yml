@@ -1,0 +1,7 @@
+language: "java"
+
+tasks:
+  dev:
+    command: "cargo run --bin back-axum"
+    deps:
+      - "^:dev"

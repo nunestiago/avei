@@ -1,0 +1,11 @@
+language: "java"
+
+tasks:
+  test:
+    command: "./gradlew test"
+  build:
+    command: "./gradlew build"
+  lint:
+    command: "./gradlew check"
+  dev:
+    command: "./gradlew bootRun"

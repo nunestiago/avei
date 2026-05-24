@@ -1,0 +1,13 @@
+language: "nodejs"
+
+tasks:
+  test:
+    command: "pnpm test"
+  build:
+    command: "pnpm build"
+  lint:
+    command: "pnpm lint"
+  dev:
+    command: "pnpm serve"
+    deps:
+      - "^:dev"
