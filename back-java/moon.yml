@@ -9,3 +9,5 @@ tasks:
     command: "./gradlew check"
   dev:
     command: "./gradlew bootRun"
+    deps:
+      - "root:dockup"

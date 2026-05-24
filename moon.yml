@@ -1,0 +1,5 @@
+tasks:
+  dockup:
+    command: "docker compose up -d"
+  dockdown:
+    command: "docker compose down"
