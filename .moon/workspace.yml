@@ -1,17 +1,15 @@
-# Configures all projects within the workspace to create a project graph.
-# Accepts a list of globs, a mapping of projects to relative file paths,
-# or both values.
-projects: ["packages/*"]
+$schema: "./cache/schemas/workspace.json"
 
-# Configures the version control system (VCS). Also known as
-# source code management (SCM).
+projects:
+  workspace: "."
+  back-java: "back-java"
+  back-axum: "back-axum"
+  front-angular: "front-angular"
+  front-mobile: "front-mobile"
+
+defaultProject: "workspace"
+
 vcs:
-  # The default branch / base.
-  defaultBranch: "master"
-
-  # The upstream version control provider, where the repository
-  # source code is stored.
-  # @since 1.8.0
-  # @values "bitbucket" | "github" | "gitlab" | "other"
+  client: "git"
+  defaultBranch: "main"
   provider: "github"
-

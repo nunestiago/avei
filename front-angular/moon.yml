@@ -1,0 +1,69 @@
+$schema: "../.moon/cache/schemas/project.json"
+
+language: "typescript"
+layer: "application"
+stack: "frontend"
+tags:
+  - "frontend"
+  - "angular"
+
+fileGroups:
+  sources:
+    - "src/**/*"
+    - "public/**/*"
+    - "libs/**/*"
+    - "angular.json"
+    - "components.json"
+    - "tsconfig*.json"
+    - "package.json"
+    - "pnpm-lock.yaml"
+  tests:
+    - "src/**/*.spec.ts"
+  configs:
+    - "eslint.config.js"
+    - "pnpm-workspace.yaml"
+
+tasks:
+  dev:
+    description: "Start the Angular dev server."
+    command: "pnpm"
+    args:
+      - "start"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    preset: "server"
+
+  build:
+    description: "Build the Angular application."
+    command: "pnpm"
+    args:
+      - "build"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    outputs:
+      - "dist"
+
+  lint:
+    description: "Lint Angular sources."
+    command: "pnpm"
+    args:
+      - "lint"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+
+  test:
+    description: "Run Angular tests."
+    command: "pnpm"
+    args:
+      - "test"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(tests)"
+      - "@group(configs)"

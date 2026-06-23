@@ -1,0 +1,80 @@
+$schema: "../.moon/cache/schemas/project.json"
+
+language: "typescript"
+layer: "application"
+stack: "frontend"
+tags:
+  - "frontend"
+  - "mobile"
+  - "expo"
+
+fileGroups:
+  sources:
+    - "app/**/*"
+    - "assets/**/*"
+    - "components/**/*"
+    - "constants/**/*"
+    - "hooks/**/*"
+    - "scripts/**/*"
+    - "app.json"
+    - "package.json"
+    - "pnpm-lock.yaml"
+    - "tsconfig.json"
+  configs:
+    - "eslint.config.js"
+    - "pnpm-workspace.yaml"
+
+tasks:
+  dev:
+    description: "Start the Expo dev server."
+    command: "pnpm"
+    args:
+      - "start"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    preset: "server"
+
+  web:
+    description: "Start Expo for web."
+    command: "pnpm"
+    args:
+      - "web"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    preset: "server"
+
+  android:
+    description: "Start Expo for Android."
+    command: "pnpm"
+    args:
+      - "android"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    preset: "server"
+
+  ios:
+    description: "Start Expo for iOS."
+    command: "pnpm"
+    args:
+      - "ios"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    preset: "server"
+
+  lint:
+    description: "Lint Expo sources."
+    command: "pnpm"
+    args:
+      - "lint"
+    toolchains: "pnpm"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"

@@ -1,4 +1,6 @@
 [tools]
+"aqua:moonrepo/moon" = "latest"
+gradle = "latest"
 java = "latest"
 node = "latest"
 rust = "latest"
