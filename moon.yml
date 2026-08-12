@@ -1,5 +1,62 @@
+$schema: "./.moon/cache/schemas/project.json"
+
+language: "unknown"
+layer: "tool"
+tags:
+  - "workspace"
+
 tasks:
-  dockup:
-    command: "docker compose up -d"
-  dockdown:
-    command: "docker compose down"
+  dev:
+    description: "Start the default local development stack."
+    command: "noop"
+    toolchains: "system"
+    deps:
+      - "back-java:dev"
+      - "front-angular:dev"
+    preset: "server"
+
+  dev-all:
+    description: "Start every local service."
+    command: "noop"
+    toolchains: "system"
+    deps:
+      - "back-java:dev"
+      - "back-axum:dev"
+      - "front-angular:dev"
+      - "front-mobile:dev"
+    preset: "server"
+
+  build:
+    description: "Build all buildable services."
+    command: "noop"
+    toolchains: "system"
+    deps:
+      - "back-java:build"
+      - "back-axum:build"
+      - "front-angular:build"
+
+  lint:
+    description: "Lint services that expose a lint task."
+    command: "noop"
+    toolchains: "system"
+    deps:
+      - "front-angular:lint"
+      - "front-mobile:lint"
+
+  test:
+    description: "Run service test suites."
+    command: "noop"
+    toolchains: "system"
+    deps:
+      - "back-java:test"
+      - "back-axum:test"
+      - "front-angular:test"
+
+  check:
+    description: "Run the repo validation stack."
+    command: "noop"
+    toolchains: "system"
+    deps:
+      - "workspace:build"
+      - "workspace:lint"
+      - "workspace:test"

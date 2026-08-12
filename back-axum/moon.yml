@@ -1,7 +1,47 @@
-language: "java"
+$schema: "../.moon/cache/schemas/project.json"
+
+language: "rust"
+layer: "application"
+stack: "backend"
+tags:
+  - "backend"
+  - "rust"
+
+fileGroups:
+  sources:
+    - "src/**/*"
+    - "Cargo.toml"
+    - "Cargo.lock"
 
 tasks:
   dev:
-    command: "cargo run --bin back-axum"
-    deps:
-      - "^:dev"
+    description: "Run the Axum service."
+    command: "cargo"
+    args:
+      - "run"
+    toolchains: "rust"
+    inputs:
+      - "@group(sources)"
+    preset: "server"
+
+  build:
+    description: "Build the Axum service."
+    command: "cargo"
+    args:
+      - "build"
+    toolchains: "rust"
+    inputs:
+      - "@group(sources)"
+    outputs:
+      - "target"
+
+  test:
+    description: "Run the Rust test suite."
+    command: "cargo"
+    args:
+      - "test"
+    toolchains: "rust"
+    inputs:
+      - "@group(sources)"
+    outputs:
+      - "target"

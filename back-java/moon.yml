@@ -1,13 +1,65 @@
+$schema: "../.moon/cache/schemas/project.json"
+
 language: "java"
+layer: "application"
+stack: "backend"
+tags:
+  - "backend"
+  - "java"
+
+fileGroups:
+  sources:
+    - "src/main/**/*"
+    - "build.gradle.kts"
+    - "settings.gradle.kts"
+  tests:
+    - "src/test/**/*"
+  gradle:
+    - "gradle/**/*"
+    - "gradlew"
+    - "gradlew.bat"
 
 tasks:
-  test:
-    command: "./gradlew test"
-  build:
-    command: "./gradlew build"
-  lint:
-    command: "./gradlew check"
   dev:
-    command: "./gradlew bootRun"
-    deps:
-      - "root:dockup"
+    description: "Start the Spring Boot API."
+    command: "node"
+    args:
+      - "../.moon/scripts/gradlew.mjs"
+      - "bootRun"
+    toolchains: "system"
+    inputs:
+      - "@group(sources)"
+      - "@group(gradle)"
+      - "/.moon/scripts/gradlew.mjs"
+    preset: "server"
+
+  build:
+    description: "Build the Spring Boot application."
+    command: "node"
+    args:
+      - "../.moon/scripts/gradlew.mjs"
+      - "build"
+    toolchains: "system"
+    inputs:
+      - "@group(sources)"
+      - "@group(tests)"
+      - "@group(gradle)"
+      - "/.moon/scripts/gradlew.mjs"
+    outputs:
+      - "build"
+
+  test:
+    description: "Run the Java test suite."
+    command: "node"
+    args:
+      - "../.moon/scripts/gradlew.mjs"
+      - "test"
+    toolchains: "system"
+    inputs:
+      - "@group(sources)"
+      - "@group(tests)"
+      - "@group(gradle)"
+      - "/.moon/scripts/gradlew.mjs"
+    outputs:
+      - "build/test-results"
+      - "build/reports/tests"

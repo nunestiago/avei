@@ -1,0 +1,12 @@
+$schema: "./cache/schemas/toolchains.json"
+
+javascript:
+  packageManager: "pnpm"
+
+typescript: {}
+
+node: {}
+
+pnpm: {}
+
+rust: {}

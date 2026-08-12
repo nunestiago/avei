@@ -7,16 +7,11 @@ projects:
   mobile: "front-mobile"
   angular: "front-angular"
   root: "."
+$schema: "./cache/schemas/workspace.json"
 
-# Configures the version control system (VCS). Also known as
-# source code management (SCM).
+defaultProject: "workspace"
+
 vcs:
   client: "git"
-  # The default branch / base.
   defaultBranch: "main"
-
-  # The upstream version control provider, where the repository
-  # source code is stored.
-  # @since 1.8.0
-  # @values "bitbucket" | "github" | "gitlab" | "other"
   provider: "github"
