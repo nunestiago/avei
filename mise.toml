@@ -1,4 +1,4 @@
 [tools]
-java = "latest"
+java = "26"
 node = "latest"
 rust = "latest"

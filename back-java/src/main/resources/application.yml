@@ -1,0 +1,31 @@
+spring:
+    application:
+        name: avei
+        file:
+            upload-dir: ./uploads
+    datasource:
+        url: "jdbc:postgresql://localhost:5432/avei?useSSL"
+        username: postgres
+        password: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: false
+        properties:
+            hibernate:
+                format_sql: true
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        database: POSTGRESQL
+        flyway:
+            enabled: false
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: http://localhost:9090/realms/avei
+                    jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
+    servlet:
+        multipart:
+            max-file-size: 50MB
+            max-request-size: 50MB

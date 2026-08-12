@@ -1,0 +1,25 @@
+{
+  "name": "avei",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "infra": "monorepo",
+  "scripts": {
+    "deps": "pnpm update -i --latest -r",
+    "moon": "moon --color --log debug"
+  },
+  "keywords": [],
+  "author": "@nunestiago",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.0.9",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "@moonrepo/cli": "^2.2.5"
+  }
+}

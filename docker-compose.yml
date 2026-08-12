@@ -18,6 +18,8 @@ services:
     container_name: keycloak-container
     image: quay.io/keycloak/keycloak:latest
     environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       DB_DATABASE: avei
@@ -30,7 +32,7 @@ services:
     networks:
       - avei
     command:
-      - start-dev
+      - "start-dev"
 
 networks:
   avei:
